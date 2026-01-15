@@ -1,10 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Star, Clock, Users, Check, Zap, Award, Shield, Menu, X } from 'lucide-react';
 
 const DznKidsStore = () => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
   const [showNotification, setShowNotification] = useState(true);
   const [currentBuyer, setCurrentBuyer] = useState(0);
   const [showImageModal, setShowImageModal] = useState(false);
@@ -37,7 +35,7 @@ const DznKidsStore = () => {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [buyers.length]);
 
   const handleImageClick = (index) => {
     setModalImage(index);
@@ -108,25 +106,25 @@ const DznKidsStore = () => {
           
           {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center justify-center space-x-6 text-sm font-semibold">
-            <a href="#" className="hover:text-yellow-300 transition-colors">Brinquedos</a>
-            <a href="#" className="hover:text-yellow-300 transition-colors">Jogos</a>
-            <a href="#" className="hover:text-yellow-300 transition-colors">Bebê</a>
-            <a href="#" className="hover:text-yellow-300 transition-colors">Esporte e Lazer</a>
-            <a href="#" className="hover:text-yellow-300 transition-colors">Escolar</a>
-            <a href="#" className="hover:text-yellow-300 transition-colors">Lançamentos</a>
-            <a href="#" className="bg-yellow-400 text-purple-700 px-4 py-1 rounded-full hover:bg-yellow-300 transition-colors">PROMOÇÃO</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Brinquedos</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Jogos</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Bebê</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Esporte e Lazer</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Escolar</a>
+            <a href="/" className="hover:text-yellow-300 transition-colors">Lançamentos</a>
+            <a href="/" className="bg-yellow-400 text-purple-700 px-4 py-1 rounded-full hover:bg-yellow-300 transition-colors">PROMOÇÃO</a>
           </nav>
 
           {/* Mobile Navigation Menu */}
           {menuOpen && (
             <nav className="md:hidden flex flex-col space-y-3 text-sm font-semibold pb-3">
-              <a href="#" className="hover:text-yellow-300 transition-colors">Brinquedos</a>
-              <a href="#" className="hover:text-yellow-300 transition-colors">Jogos</a>
-              <a href="#" className="hover:text-yellow-300 transition-colors">Bebê</a>
-              <a href="#" className="hover:text-yellow-300 transition-colors">Esporte e Lazer</a>
-              <a href="#" className="hover:text-yellow-300 transition-colors">Escolar</a>
-              <a href="#" className="hover:text-yellow-300 transition-colors">Lançamentos</a>
-              <a href="#" className="bg-yellow-400 text-purple-700 px-4 py-2 rounded-full hover:bg-yellow-300 transition-colors text-center">PROMOÇÃO</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Brinquedos</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Jogos</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Bebê</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Esporte e Lazer</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Escolar</a>
+              <a href="/" className="hover:text-yellow-300 transition-colors">Lançamentos</a>
+              <a href="/" className="bg-yellow-400 text-purple-700 px-4 py-2 rounded-full hover:bg-yellow-300 transition-colors text-center">PROMOÇÃO</a>
             </nav>
           )}
         </div>
@@ -232,26 +230,11 @@ const DznKidsStore = () => {
               </div>
             </div>
 
-            {/* Quantity and Buy */}
-            <div className="flex flex-col md:flex-row items-stretch md:items-center space-y-3 md:space-y-0 md:space-x-4 mb-4 md:mb-6">
-              <div className="flex items-center justify-center space-x-3 bg-gray-100 rounded-xl p-2 border-2 border-gray-300">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 transition-colors"
-                >
-                  -
-                </button>
-                <span className="w-12 text-center font-bold text-xl">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 transition-colors"
-                >
-                  +
-                </button>
-              </div>
+            {/* Buy Button */}
+            <div className="mb-4 md:mb-6">
               <button 
                 onClick={handleAddToCart}
-                className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 shadow-lg border-2 border-green-700 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 shadow-lg border-2 border-green-700 flex items-center justify-center space-x-2"
               >
                 <ShoppingCart size={20} className="md:w-6 md:h-6" />
                 <span>COMPRAR AGORA</span>
